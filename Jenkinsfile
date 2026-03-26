@@ -39,5 +39,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Kubernetes') {
+            steps {
+            // Using PowerShell / cmd on Windows
+            bat 'kubectl apply -f deployment.yaml'
+    }
+}
     }
 }
