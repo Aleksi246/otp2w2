@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS_ID = 'Docker_creds'
+        DOCKERHUB_CREDENTIALS_ID = 'dockerhub_creds'
         DOCKERHUB_REPO = 'aleksi246/otp2w2_demo'
         DOCKER_IMAGE_TAG = 'latest'
     }
