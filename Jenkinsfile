@@ -42,6 +42,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
             // Using PowerShell / cmd on Windows
+            bat 'SET KUBECONFIG=C:\\Users\\Aleksi\\.kube\\config'
             bat 'kubectl apply -f deployment.yaml'
     }
 }
