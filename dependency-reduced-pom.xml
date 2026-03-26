@@ -5,7 +5,7 @@
   <artifactId>demo</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
-    <finalName>average_speed</finalName>
+    <finalName>demo</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -60,7 +60,7 @@
     </plugins>
   </build>
   <properties>
-    <maven.compiler.target>17</maven.compiler.target>
-    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
   </properties>
 </project>

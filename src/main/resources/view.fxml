@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="root" spacing="10" alignment="TOP_LEFT"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.Controller">
+
+    <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+
+    <!-- Distance -->
+    <Label fx:id="lblDistance" text="Distance (km)" />
+    <TextField fx:id="txtDistance" promptText="Enter distance" maxWidth="300" />
+
+    <!-- Consumption -->
+    <Label fx:id="lblConsumption" text="Fuel Consumption (L/100 km)" />
+    <TextField fx:id="txtConsumption" promptText="Enter consumption" maxWidth="300" />
+
+    <!-- Price -->
+    <Label fx:id="lblPrice" text="Fuel Price (per liter)" />
+    <TextField fx:id="txtPrice" promptText="Enter price" maxWidth="300" />
+
+    <!-- Calculate Button -->
+    <Button fx:id="btnCalculate" text="Calculate Trip Cost"
+            onAction="#handleCalculate" />
+
+    <!-- Result -->
+    <Label fx:id="lblResult" text="" wrapText="true" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+
+    <!-- Language Buttons -->
+    <HBox fx:id="langButtons" spacing="10" alignment="CENTER">
+        <padding><Insets top="10"/></padding>
+        <Button fx:id="btnEN" text="EN" onAction="#setEnglish"/>
+        <Button fx:id="btnFR" text="FR" onAction="#setFrench"/>
+        <Button fx:id="btnJP" text="JP" onAction="#setJapanese"/>
+        <Button fx:id="btnIR" text="IR" onAction="#setPersian"/>
+    </HBox>
+
+</VBox>

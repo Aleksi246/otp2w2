@@ -4,7 +4,7 @@ ENV DISPLAY=host.docker.internal:0.0
 
 # Install only required libraries (NO MAVEN HERE)
 RUN apt-get update && \
-    apt-get install -y wget unzip libgtk-3-0 libgbm1 libx11-6 && \
+    apt-get install -y wget unzip libgtk-3-0 libgbm1 libx11-6 fonts-noto-cjk && \
     apt-get clean
 
 # Download JavaFX SDK
@@ -24,4 +24,4 @@ RUN mvn clean package -DskipTests
 # Debug
 RUN ls -l target/
 
-CMD ["java", "--module-path", "/opt/javafx-sdk-21/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "target/demo-1.0-SNAPSHOT.jar"]
+CMD ["java", "--module-path", "/opt/javafx-sdk-21/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "target/demo.jar"]

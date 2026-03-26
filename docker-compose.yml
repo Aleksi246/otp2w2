@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  app:
+    # image is my own account for the exercise you have to change to your account
+    #IMPORTANT docker build -t yourname/sum-product-fx .
+    # docker push yourname/sum-product-fx: last
+    # then you can change the image in the following statment
+    image: aleksi246/otp2w2_demo:latest
+    container_name: otp2w2_demo
+    environment:
+      DISPLAY: host.docker.internal:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+#    network_mode: bridge # it cancels network of docker -> docker cannot find host db.
+
+#  Then execute docker compose up --build
