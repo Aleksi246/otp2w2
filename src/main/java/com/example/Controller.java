@@ -28,13 +28,16 @@ public class Controller {
 
     private Map<String, String> localizedStrings;
 
+    private Locale currentLocale;
+    private RecordDao rd = new RecordDao();
+
     @FXML
     private void initialize() {
         setLanguage(new Locale("en", "US"));
     }
 
     private void setLanguage(Locale locale) {
-        localizedStrings = LocalizationService.getLocalizedStrings(locale);
+        localizedStrings = LocalizationService.loadStrings(locale);
         lblDistance.setText(localizedStrings.getOrDefault("distance.label", "Distance (km)"));
         lblConsumption.setText(localizedStrings.getOrDefault("consumption.label", "Fuel Consumption (L/100 km)"));
         lblPrice.setText(localizedStrings.getOrDefault("price.label", "Fuel Price (per liter)"));
@@ -46,6 +49,7 @@ public class Controller {
         txtPrice.setPromptText(localizedStrings.getOrDefault("price.prompt", "Enter price"));
 
         applyTextDirection(locale);
+        currentLocale = locale;
     }
 
     private void applyTextDirection(Locale locale) {
@@ -85,6 +89,11 @@ public class Controller {
             String result = MessageFormat.format(pattern,
                     String.format("%.2f", fuel), String.format("%.2f", cost));
             lblResult.setText(result);
+            
+            //another try could be put here for saftey but naah
+            String language = currentLocale.getLanguage();
+            rd.saveRecord(distance, consumption, price, fuel, cost, language);
+
         } catch (NumberFormatException e) {
             lblResult.setText(localizedStrings.getOrDefault("invalid.input", "Invalid input"));
         }
