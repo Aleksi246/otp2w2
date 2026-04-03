@@ -3,6 +3,7 @@ services:
     image: mysql:8.0
     container_name: fuel-db
     restart: always
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       # make sure your DB_PASSWORD is correct mine is root
       MYSQL_ROOT_PASSWORD: root

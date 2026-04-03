@@ -1,6 +1,8 @@
 -- mysql -u root -p < init.sql
 -- Create Database
 
+SET NAMES utf8mb4;
+
 CREATE DATABASE IF NOT EXISTS fuel_calculator_localization
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

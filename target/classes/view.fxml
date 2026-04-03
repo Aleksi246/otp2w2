@@ -5,6 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <VBox fx:id="root" spacing="10" alignment="TOP_LEFT"
+      style="-fx-font-family: 'Noto Sans CJK JP';"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.Controller">
 

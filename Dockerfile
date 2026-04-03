@@ -6,6 +6,7 @@ ENV DISPLAY=host.docker.internal:0.0
 RUN apt-get update && \
     apt-get install -y wget unzip libgtk-3-0 libgbm1 libx11-6 fonts-noto fonts-noto-cjk fontconfig && \
     fc-cache -f && \
+    cp /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc /usr/lib/jvm/temurin-21-jdk-amd64/lib/fonts/ 2>/dev/null || true && \
     apt-get clean
 
 # Download JavaFX SDK
