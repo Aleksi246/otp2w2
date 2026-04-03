@@ -1,5 +1,5 @@
-com/example/RecordDao.class
-com/example/Main.class
-com/example/DatabaseConnection.class
-com/example/LocalizationService.class
-com/example/Controller.class
+com\example\Controller.class
+com\example\Main.class
+com\example\DatabaseConnection.class
+com\example\RecordDao.class
+com\example\LocalizationService.class

@@ -15,13 +15,7 @@ RUN wget https://download2.gluonhq.com/openjfx/21/openjfx-21_linux-x64_bin-sdk.z
 
 WORKDIR /app
 
-# Copy project
-COPY pom.xml .
-COPY src ./src
+COPY target/demo.jar .
 
-RUN mvn clean package -DskipTests
 
-# Debug
-RUN ls -l target/
-
-CMD ["java", "--module-path", "/opt/javafx-sdk-21/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "target/demo.jar"]
+CMD ["java", "--module-path", "/opt/javafx-sdk-21/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "demo.jar"]

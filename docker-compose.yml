@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   db:
-    image: mariadb:11
+    image: mysql:8.0
     container_name: fuel-db
     restart: always
     environment:
@@ -16,6 +14,12 @@ services:
       - "3307:3306"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h 127.0.0.1 -P 3306 -u root -proot -e 'SELECT 1'"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
 
   app:
     # image is my own account for the exercise you have to change to your account
@@ -25,9 +29,10 @@ services:
     image: aleksi246/otp2w2_demo_w3:latest
     container_name: otp2w2_demo_w3
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
-      DB_URL: jdbc:mariadb://fuel-db:3306/fuel_calculator_localization
+      DB_URL: jdbc:mysql://fuel-db:3306/fuel_calculator_localization
       # make sure your DB_USER name is correct mine is root
       DB_USER: fuel_app_user
       # make sure your DB_PASSWORD is correct mine is root
