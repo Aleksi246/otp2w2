@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     private static final String URL = System.getenv().getOrDefault(
         "DB_URL",
-         "jdbc:mysql://localhost:3306/fuel_calculator_localization"
+         "jdbc:mysql://localhost:3308/fuel_calculator_localization?useUnicode=true&characterEncoding=UTF-8"
         );
 
     private static final String USER = "fuel_app_user";

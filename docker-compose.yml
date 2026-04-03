@@ -32,7 +32,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DB_URL: jdbc:mysql://fuel-db:3306/fuel_calculator_localization
+      DB_URL: jdbc:mysql://fuel-db:3306/fuel_calculator_localization?useUnicode=true&characterEncoding=UTF-8
       # make sure your DB_USER name is correct mine is root
       DB_USER: fuel_app_user
       # make sure your DB_PASSWORD is correct mine is root
