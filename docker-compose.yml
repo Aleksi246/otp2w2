@@ -23,7 +23,7 @@ services:
     # docker push yourname/sum-product-fx: last
     # then you can change the image in the following statment
     image: aleksi246/otp2w2_demo_w3:latest
-    container_name: 
+    container_name: otp2w2_demo_w3
     depends_on:
       - db
     environment:
