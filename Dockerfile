@@ -19,7 +19,6 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# ✅ NOW Maven works correctly
 RUN mvn clean package -DskipTests
 
 # Debug

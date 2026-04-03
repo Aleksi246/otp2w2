@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: aleksi246/otp2w2_demo:latest
+          image: aleksi246/otp2w2_demo_w3:latest
           imagePullPolicy: Never   # use Never for local images
           env:
             - name: DISPLAY

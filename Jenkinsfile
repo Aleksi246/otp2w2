@@ -2,13 +2,13 @@ pipeline {
     agent any
     environment {
         DOCKERHUB_CREDENTIALS_ID = 'dockerhub-creds'
-        DOCKERHUB_REPO = 'aleksi246/otp2w2_demo'
+        DOCKERHUB_REPO = 'aleksi246/otp2w2_demo_w3'
         DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/aleksi246/otp2w2.git'
+                git branch: 'w3', url: 'https://github.com/aleksi246/otp2w2.git'
             }
         }
         stage('Build') {

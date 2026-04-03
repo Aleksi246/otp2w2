@@ -5,8 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    
-    private static final String URL = "jdbc:mysql://localhost:3306/fuel_calculator_localization";
+    private static final String URL = System.getenv().getOrDefault(
+        "DB_URL",
+         "jdbc:mysql://localhost:3306/fuel_calculator_localization"
+        );
+
     private static final String USER = "fuel_app_user";
     private static final String PASSWORD = "password";
 
