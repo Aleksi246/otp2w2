@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+demo,com.example,Controller,260,0,12,0,48,0,16,0,10,0
+demo,com.example,RecordDao,0,46,0,0,0,15,0,2,0,2
+demo,com.example,DatabaseConnection,3,12,0,0,1,2,1,2,1,2
+demo,com.example,Main,36,0,0,0,11,0,3,0,3,0
+demo,com.example,LocalizationService,3,60,2,6,1,17,3,4,1,2

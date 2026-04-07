@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocalizationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">LocalizationService.java</span></div><h1>LocalizationService.java</h1><pre class="source lang-java linenums">package com.example;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+<span class="nc" id="L11">public class LocalizationService {</span>
+
+    private static final String LOAD_STRINGS_SQL =
+            &quot;SELECT `key`, value FROM localization_strings WHERE language = ?&quot;;
+
+<span class="fc" id="L16">    private static final Map&lt;String, String&gt; cache = new HashMap&lt;&gt;();</span>
+    private static String currentLanguage;
+
+    public static Map&lt;String, String&gt; loadStrings(Locale locale) {
+<span class="fc" id="L20">        String language = locale.getLanguage();</span>
+<span class="pc bpc" id="L21" title="2 of 6 branches missed.">        if (language != null &amp;&amp; language.equals(currentLanguage) &amp;&amp; !cache.isEmpty()) {</span>
+<span class="fc" id="L22">            return cache;</span>
+        }
+
+<span class="fc" id="L25">        cache.clear();</span>
+<span class="fc" id="L26">        currentLanguage = language;</span>
+
+<span class="fc" id="L28">        try (Connection conn = DatabaseConnection.getConnection();</span>
+<span class="fc" id="L29">             PreparedStatement stmt = conn.prepareStatement(LOAD_STRINGS_SQL)) {</span>
+
+<span class="fc" id="L31">            stmt.setString(1, language);</span>
+
+<span class="fc" id="L33">            try (ResultSet rs = stmt.executeQuery()) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">                while (rs.next()) {</span>
+<span class="fc" id="L35">                    cache.put(rs.getString(&quot;key&quot;), rs.getString(&quot;value&quot;));</span>
+                }
+            }
+
+<span class="fc" id="L39">        } catch (SQLException e) {</span>
+<span class="fc" id="L40">            System.err.println(&quot;Error loading localization strings: &quot; + e.getMessage());</span>
+<span class="fc" id="L41">            e.printStackTrace();</span>
+<span class="fc" id="L42">        }</span>
+
+<span class="fc" id="L44">        return cache;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
