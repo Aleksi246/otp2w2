@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 <span class="nc" id="L7">public class DatabaseConnection {</span>
 <span class="fc" id="L8">    private static final String URL = System.getenv().getOrDefault(</span>
-        &quot;DB_URL&quot;,
-         &quot;jdbc:mysql://localhost:3308/fuel_calculator_localization?useUnicode=true&amp;characterEncoding=UTF-8&quot;
+<span class="fc" id="L9">        &quot;DB_URL&quot;,</span>
+<span class="fc" id="L10">         &quot;jdbc:mysql://localhost:3308/fuel_calculator_localization?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span>
         );
 
     private static final String USER = &quot;fuel_app_user&quot;;
-    private static final String PASSWORD = &quot;password&quot;;
+<span class="fc" id="L14">    private static final String PASSWORD = &quot;password&quot;;</span>
 
     public static Connection getConnection() throws SQLException {
 <span class="fc" id="L17">        return DriverManager.getConnection(URL, USER, PASSWORD);</span>
