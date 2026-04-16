@@ -1,6 +1,10 @@
 pipeline {
     agent any
     environment {
+        PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-21.0.10' // Adjust to your actual JDK path
+        SONARQUBE_SERVER = 'SonarQubeServer' // The name of the SonarQube server configured in Jenkins
+        SONAR_TOKEN = 'sonarqube' // Store the token securely
         DOCKERHUB_CREDENTIALS_ID = 'dockerhub-creds'
         DOCKERHUB_REPO = 'aleksi246/otp2w2_demo_w3'
         DOCKER_IMAGE_TAG = 'latest'
@@ -16,9 +20,19 @@ pipeline {
                 bat 'mvn clean install'
             }
         }
-        stage('Test') {
+        stage('SonarQube Analysis') {
             steps {
-                bat 'mvn test'
+                withSonarQubeEnv('SonarQubeServer') {
+                bat """
+                ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
+                -Dsonar.projectKey=devops-demo ^
+                -Dsonar.sources=src ^
+                -Dsonar.projectName=DevOps-Demo ^
+                -Dsonar.host.url=http://localhost:9000 ^
+                -Dsonar.login=${env.SONAR_TOKEN} ^
+                -Dsonar.java.binaries=target/classes
+                """
+                }
             }
         }
 
